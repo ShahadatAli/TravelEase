@@ -1,0 +1,313 @@
+<html>
+
+<head>
+    <title>TravelEase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Montserrat", sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        body {
+            background-color: #121212;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            /* Enable wrapping for smaller screens */
+            gap: 1rem;
+            /* Add space between items */
+            margin-top: 1.5rem;
+            width: 90%;
+            max-width: 1536px;
+            margin-inline: auto;
+        }
+
+        .wrapper {
+            width: calc(20% - 1rem);
+            /* Use percentage for dynamic width */
+            height: 93vh;
+            position: relative;
+            overflow: hidden;
+            mask-image: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0),
+                    rgba(0, 0, 0, 1) 20%,
+                    rgba(0, 0, 0, 1) 80%,
+                    rgba(0, 0, 0, 0));
+        }
+
+        @keyframes scrollUp {
+            to {
+                top: -410px;
+            }
+        }
+
+        @keyframes scrollDown {
+            to {
+                bottom: -410px;
+            }
+        }
+
+        .itemLeft,
+        .itemRight,
+        .itemThird,
+        .itemFourth,
+        .itemFifth {
+            width: 100%;
+            height: 400px;
+            background-color: #e11d48;
+            border-radius: 6px;
+            position: absolute;
+            animation-timing-function: linear;
+            animation-duration: 60s;
+            /* Increased duration for slower animation */
+            animation-iteration-count: infinite;
+        }
+
+        .itemLeft {
+            top: max(calc(400px * 3.2), 100%);
+            animation-name: scrollUp;
+        }
+
+        .itemRight {
+            bottom: max(calc(400px * 3.2), calc(100% + 400px));
+            animation-name: scrollDown;
+        }
+
+        .itemThird {
+            top: max(calc(400px * 3.2), 100%);
+            animation-name: scrollUp;
+        }
+
+        .itemFourth {
+            bottom: max(calc(400px * 3.2), calc(100% + 400px));
+            animation-name: scrollDown;
+        }
+
+        .itemFifth {
+            top: max(calc(400px * 3.2), 100%);
+            animation-name: scrollUp;
+        }
+
+        .item1 {
+            background-image: url('1.jpg');
+            background-size: cover;
+            animation-delay: calc(60s / 4 * (4 - 1) * -1);
+        }
+
+        .item2 {
+            background-image: url('2.jpg');
+            background-size: cover;
+            animation-delay: calc(60s / 4 * (4 - 2) * -1);
+        }
+
+        .item3 {
+            background-image: url('3.jpg');
+            background-size: cover;
+            animation-delay: calc(60s / 4 * (4 - 3) * -1);
+        }
+
+        .item4 {
+            background-image: url('4.jpg');
+            background-size: cover;
+            animation-delay: calc(60s / 4 * (4 - 4) * -1);
+        }
+
+        /* Login Form Styling */
+        .login-form {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #121212;
+            padding: 2rem;
+            border-radius: 8px;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            height: 350px;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .login-form input {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .login-form label {
+            color: white;
+            font-size: 85%;
+        }
+
+        .budget-container {
+            border-radius: 10px;
+            background: white;
+            padding: 20px;
+            width: 70%;
+            height: 80px;
+            position: fixed;
+            left: 50%;
+            transform: translate(-50%, 30%);
+
+        }
+
+        .budget {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            /* Adjust the gap between the elements */
+        }
+
+        .budget-container p {
+            position: fixed;
+            top: 8px;
+
+        }
+
+        #budget-amount {
+            position: fixed;
+            font-size: 12px;
+            bottom: -6px;
+            left: 18px;
+            width: 50%;
+        }
+        
+        #currency{
+            position: fixed;
+            font-size: 12px;
+            bottom: 12px;
+            right: 18px;
+            width: 25%;
+            height: 30px;
+        }
+
+        .login-form button {
+            bottom: 30px;
+            position: fixed;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30%;
+            padding: 0.5rem;
+            background-color: #e11d48;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login-form button:hover {
+            background-color: #c51c40;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .wrapper {
+                width: calc(33.33% - 1rem);
+                /* 3 columns on medium screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wrapper {
+                width: calc(50% - 1rem);
+                /* 2 columns on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wrapper {
+                width: calc(100% - 1rem);
+                /* Full width on small screens */
+            }
+
+            .login-form {
+                width: 80%;
+                /* Adjust login form size on smaller screens */
+                padding: 1rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- First Column -->
+        <div class="wrapper">
+            <div class="itemLeft item1"></div>
+            <div class="itemLeft item2"></div>
+            <div class="itemLeft item3"></div>
+            <div class="itemLeft item4"></div>
+        </div>
+
+        <!-- Second Column -->
+        <div class="wrapper">
+            <div class="itemRight item1"></div>
+            <div class="itemRight item2"></div>
+            <div class="itemRight item3"></div>
+            <div class="itemRight item4"></div>
+        </div>
+
+        <!-- Third Column (with Login Form) -->
+        <div class="wrapper">
+            <div class="itemThird item1"></div>
+            <div class="itemThird item2"></div>
+            <div class="itemThird item3"></div>
+            <div class="itemThird item4"></div>
+        </div>
+
+        <!-- Fourth Column -->
+        <div class="wrapper">
+            <div class="itemFourth item1"></div>
+            <div class="itemFourth item2"></div>
+            <div class="itemFourth item3"></div>
+            <div class="itemFourth item4"></div>
+        </div>
+
+        <!-- Fifth Column -->
+        <div class="wrapper">
+            <div class="itemFifth item1"></div>
+            <div class="itemFifth item2"></div>
+            <div class="itemFifth item3"></div>
+            <div class="itemFifth item4"></div>
+        </div>
+    </div>
+
+    <!-- Login Form in front of itemThird -->
+    <div class="login-form">
+        <h2>Find Me</h2>
+        <input type="radio" id="option1" name="age" value="">
+        <label for="option1">Deals so cheap, it's almost free!</label><br>
+        <input type="radio" id="option2" name="age" value="">
+        <label for="option2">Best deals, maximum fun!</label><br>
+        <div class="budget-container">
+            <p>My Budget</p>
+            <div class="budget">
+                <input type="number" id="budget-amount" value="">
+                <select name="currency" id="currency">
+                    <option value="USD">USD</option>
+                    <option value="CAD">CAD</option>
+                    <option value="Rupee">Rupee</option>
+                    <option value="Taka">Taka</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit">Next</button>
+    </div>
+</body>
+
+</html>

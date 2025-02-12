@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelEase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Montserrat", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .image-container {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .image-box {
+            position: relative;
+            overflow: hidden;
+            width: 18%;
+            height: 450px;
+            border: 2px solid #444;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-box:hover {
+            transform: scale(1.05);
+            /* Grow effect for the entire box */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+            /* Only blur the image */
+        }
+
+        .image-box:hover img {
+            filter: blur(4px);
+            /* Blur effect */
+        }
+
+        .image-box::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-box:hover::after {
+            opacity: 1;
+            /* Dark overlay effect */
+        }
+
+        .image-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+            white-space: nowrap;
+            /* Ensures text stays on a single line */
+        }
+
+        .image-box:hover .image-text {
+            opacity: 1;
+            /* Show text on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Select your desired location</h1>
+    <div class="image-container">
+        <div class="image-box">
+            <img src="sunny.jpg" alt="Image 1">
+            <span class="image-text">Sunny</span>
+        </div>
+        <div class="image-box">
+            <img src="rain.jpg" alt="Image 2">
+            <span class="image-text">Rainy</span>
+        </div>
+        <div class="image-box">
+            <img src="random.jpg" alt="Image 3">
+            <span class="image-text">Surprise Me!</span>
+        </div>
+        <div class="image-box">
+            <img src="tropical.jpg" alt="Image 4">
+            <span class="image-text">Tropical</span>
+        </div>
+        <div class="image-box">
+            <img src="mild.jpg" alt="Image 5">
+            <span class="image-text">Mild</span>
+        </div>
+    </div>
+</body>
+
+</html>
